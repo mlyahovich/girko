@@ -1,0 +1,15 @@
+name: 'Girko Features View Nodes'
+description: 'Girko Features View Nodes'
+package: Girko
+type: module
+core: 8.x
+dependencies:
+  - girko_features_ct_service
+  - girko_features_taxonomy_city
+  - girko_features_taxonomy_services
+  - girko_fields_storage
+  - node
+  - taxonomy
+  - user
+  - views
+version: 8.x-1.0

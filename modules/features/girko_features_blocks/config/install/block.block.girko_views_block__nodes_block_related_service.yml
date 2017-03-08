@@ -1,0 +1,31 @@
+langcode: uk
+status: true
+dependencies:
+  config:
+    - views.view.nodes
+  module:
+    - node
+    - views
+  theme:
+    - girko
+id: girko_views_block__nodes_block_related_service
+theme: girko
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:nodes-block_related_service'
+settings:
+  id: 'views_block:nodes-block_related_service'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      service: service
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

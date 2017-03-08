@@ -1,0 +1,22 @@
+langcode: uk
+status: true
+dependencies:
+  module:
+    - ctools
+    - taxonomy
+id: citys
+label: Міста
+type: 'canonical_entities:taxonomy_term'
+pattern: '/city/[term:name]'
+selection_criteria:
+  bcf37913-73a6-4d50-a36c-2a59057c54bd:
+    id: 'entity_bundle:taxonomy_term'
+    bundles:
+      citys: citys
+    negate: false
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    uuid: bcf37913-73a6-4d50-a36c-2a59057c54bd
+selection_logic: and
+weight: -5
+relationships: {  }

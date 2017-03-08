@@ -1,0 +1,42 @@
+langcode: uk
+status: true
+dependencies:
+  config:
+    - page_manager.page.service_term_page
+    - views.view.taxonomy_terms
+  module:
+    - ctools
+    - views
+id: service_term_page-block_display-0
+label: 'Service page (City)'
+variant: block_display
+variant_settings:
+  blocks:
+    e4c64268-c677-49c9-afb9-efd7fa6400af:
+      id: 'views_block:taxonomy_terms-block_service_list'
+      label: ''
+      provider: views
+      label_display: visible
+      views_label: ''
+      items_per_page: none
+      region: top
+      weight: 0
+      uuid: e4c64268-c677-49c9-afb9-efd7fa6400af
+      context_mapping: {  }
+  id: block_display
+  uuid: 348f5ba2-de34-468a-9a7d-5e5d90544003
+  label: null
+  weight: 0
+  page_title: '[term:name]'
+page: service_term_page
+weight: 0
+selection_criteria:
+  -
+    id: 'entity_bundle:taxonomy_term'
+    bundles:
+      citys: citys
+    negate: false
+    context_mapping:
+      taxonomy_term: taxonomy_term
+selection_logic: and
+static_context: {  }

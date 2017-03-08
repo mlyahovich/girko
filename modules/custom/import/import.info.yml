@@ -1,0 +1,7 @@
+name: 'Import'
+type: module
+description: 'Imports CSV files.'
+package: Import content
+version: 8.x-1.0
+configure: import.settings
+core: '8.x'

@@ -1,0 +1,14 @@
+import.settings:
+  path: '/admin/config/content/import/settings'
+  defaults:
+    _form: '\Drupal\import\Form\ImportForm'
+    _title: 'Import'
+  requirements:
+    _permission: 'access content'
+import.pattern:
+  path: '/admin/config/content/import/settings'
+  defaults:
+    _form: '\Drupal\import\Form\ImportForm'
+    _title: 'Import'
+  requirements:
+    _permission: 'access content'

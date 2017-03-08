@@ -1,0 +1,31 @@
+langcode: uk
+status: true
+dependencies:
+  config:
+    - views.view.nodes
+  module:
+    - ctools
+    - views
+  theme:
+    - girko
+id: views_block__nodes_block_citys
+theme: girko
+region: sidebar_second
+weight: -7
+provider: null
+plugin: 'views_block:nodes-block_citys'
+settings:
+  id: 'views_block:nodes-block_citys'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      service: service
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

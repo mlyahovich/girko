@@ -1,0 +1,11 @@
+import.patterns.form:
+  route_name: import.settings
+  base_route: import.settings
+  title: 'Patterns'
+  weight: 10
+
+import.settings.form:
+  route_name: import.pattern
+  base_route: import.settings
+  title: 'New import'
+  weight: 20

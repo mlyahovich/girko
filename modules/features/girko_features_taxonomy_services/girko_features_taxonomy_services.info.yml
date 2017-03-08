@@ -1,0 +1,13 @@
+name: 'Girko Features Taxonomy Services'
+description: 'Girko Features Taxonomy Services'
+package: Girko
+type: module
+core: 8.x
+dependencies:
+  - field
+  - language
+  - path
+  - taxonomy
+  - text
+  - user
+version: 8.x-1.0

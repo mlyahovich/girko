@@ -1,0 +1,6 @@
+name: 'Girko'
+type: module
+description: 'Provides extending and altering of sites functionality.'
+package: Girko
+version: 8.x-1.0
+core: '8.x'

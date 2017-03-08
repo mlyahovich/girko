@@ -1,0 +1,11 @@
+name: 'Girko Features Page Taxonomy'
+description: 'Girko Features Page Taxonomy'
+package: Girko
+type: module
+core: 8.x
+dependencies:
+  - ctools
+  - girko_features_view_taxonomy_terms
+  - page_manager
+  - views
+version: 8.x-1.0

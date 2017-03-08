@@ -1,0 +1,108 @@
+<?php
+
+/**
+ * @file
+ * This is the girko module for extending and altering functionality.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Implements hook_form_alter().
+ */
+function girko_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  switch ($form_id) {
+    case 'pathauto_bulk_update_form' :
+
+      $form['custom']['delete_custom'] = [
+        '#type' => 'fieldset',
+        '#title' => t('Listing alias'),
+        '#collapsible' => TRUE,
+        '#collapsed' => TRUE,
+        '#group' => 'custom',
+        '#weight' => 10,
+      ];
+
+      $form['custom']['delete_custom']['del'] = [
+        '#type' => 'checkbox',
+        '#description' => t('If check - delete all alias for listing and create new'),
+        '#title' => t('Recreate'),
+      ];
+
+      $form['#submit'][] = '_custom_recreate';
+      break;
+  }
+}
+
+/**
+ * Custom submit.
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ */
+function _custom_recreate($form, \Drupal\Core\Form\FormStateInterface $form_state) {
+  $del_status = $form_state->getValue('del');
+  if ($del_status == 1) {
+    _girko_recreate_all_alias_for_listing_page();
+  }
+}
+
+/**
+ * Recreate all alias for listing page.
+ */
+function _girko_recreate_all_alias_for_listing_page() {
+
+  $list_listing_alias = Drupal::database()
+    ->select('url_alias', 'a')
+    ->fields('a', ['pid'])
+    ->condition('a.alias', '%listing%', 'LIKE')
+    ->execute()
+    ->fetchAll();
+
+  if (!empty($list_listing_alias)) {
+    foreach ($list_listing_alias as $pid) {
+      Drupal::database()
+        ->delete('url_alias')
+        ->condition('pid', $pid->pid)
+        ->execute();
+    }
+  }
+
+  /** @var \Drupal\Core\Path\AliasManager $alias_service */
+  $alias_manager = \Drupal::service('path.alias_manager');
+
+  /** @var \Drupal\Core\Path\AliasStorage $alias_storage */
+  $alias_storage = \Drupal::service('path.alias_storage');
+
+  //$alias = $entity->toArray()['path'][0]['alias'];
+  $vocabulary = 'citys';
+
+  $city_query = \Drupal::entityQuery('taxonomy_term');
+  $city_query->condition('vid', $vocabulary);
+  $city_tids = $city_query->execute();
+  $city_terms = \Drupal\taxonomy\Entity\Term::loadMultiple($city_tids);
+
+  $service_query = \Drupal::entityQuery('taxonomy_term');
+  $service_query->condition('vid', 'services');
+  $service_tids = $service_query->execute();
+  $service_terms = \Drupal\taxonomy\Entity\Term::loadMultiple($service_tids);
+
+  /** @var \Drupal\taxonomy\Entity\Term $city_term */
+  foreach ($city_terms as $city_term) {
+
+    $city_term_alias = $alias_manager->getAliasByPath('/taxonomy/term/' . $city_term->id(), 'uk');
+    $city_term_name = explode('/', $city_term_alias)[2];
+
+    /** @var \Drupal\taxonomy\Entity\Term $service_term */
+    foreach ($service_terms as $service_term) {
+      $service_term_alias = $alias_manager->getAliasByPath('/taxonomy/term/' . $service_term->id(), 'uk');
+      $service_term_name = explode('/', $service_term_alias)[2];
+
+      $alias = '/listing/' . $city_term_name . '/' . $service_term_name;
+      $exist = $alias_storage->aliasExists($alias, 'uk');
+      if (!$exist) {
+        $alias_storage->save('/listing/' . $city_term->id() . '/' . $service_term->id(), $alias, 'uk');
+      }
+    }
+  }
+}

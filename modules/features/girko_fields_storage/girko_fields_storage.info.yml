@@ -1,0 +1,15 @@
+name: 'Girko Fields Storage'
+description: 'Girko Fields Storage'
+package: Girko
+type: module
+core: 8.x
+dependencies:
+  - field
+  - file
+  - image
+  - link
+  - node
+  - taxonomy
+  - text
+  - video_embed_field
+version: 8.x-1.0

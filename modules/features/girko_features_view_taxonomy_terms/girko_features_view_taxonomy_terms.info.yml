@@ -1,0 +1,13 @@
+name: 'Girko Features View Taxonomy Terms'
+description: 'Girko Features View Taxonomy Terms'
+package: Girko
+type: module
+core: 8.x
+dependencies:
+  - girko_features_taxonomy_city
+  - girko_features_taxonomy_services
+  - taxonomy
+  - user
+  - views
+  - views_field_view
+version: 8.x-1.0

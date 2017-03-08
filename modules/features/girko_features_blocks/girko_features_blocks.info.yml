@@ -1,0 +1,11 @@
+name: 'Girko Features Blocks'
+description: 'Girko Features Blocks'
+package: Girko
+type: module
+core: 8.x
+dependencies:
+  - block
+  - ctools
+  - node
+  - views
+version: 8.x-1.0

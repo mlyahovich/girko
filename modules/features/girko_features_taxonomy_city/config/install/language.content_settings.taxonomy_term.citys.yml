@@ -1,0 +1,10 @@
+langcode: uk
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.citys
+id: taxonomy_term.citys
+target_entity_type_id: taxonomy_term
+target_bundle: citys
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,20 @@
+name: 'Girko Features CT Service'
+description: 'Girko Features CT Service'
+package: Girko
+type: module
+core: 8.x
+dependencies:
+  - field
+  - girko_features_taxonomy_city
+  - girko_features_taxonomy_services
+  - girko_fields_storage
+  - image
+  - language
+  - link
+  - menu_ui
+  - node
+  - path
+  - text
+  - user
+  - video_embed_field
+version: 8.x-1.0

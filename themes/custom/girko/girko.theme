@@ -1,0 +1,29 @@
+<?php
+/**
+ * @file
+ * Bootstrap sub-theme.
+ *
+ * Place your custom PHP code in this file.
+ */
+
+/**
+ * Implements hook_preprocess_HOOK() for page templates.
+ */
+function girko_preprocess_page(&$variables) {
+  
+  //fix display of empty region
+  $left = render($variables['page']['sidebar_first']);
+  $right = render($variables['page']['sidebar_second']);
+  $left = _girko_remove_html_comments($left);
+  $right = _girko_remove_html_comments($right);
+  $variables['page']['sidebar_first_exist'] = !empty($left);
+  $variables['page']['sidebar_second_exist'] = !empty($right);
+}
+
+/**
+ * Remove unwanted HTML comments.
+ */
+function _girko_remove_html_comments($content = '') {
+  $content = preg_replace('/<!--(.|\s)*?-->/', '', $content);
+  return preg_replace('/\n/', '', $content);
+}

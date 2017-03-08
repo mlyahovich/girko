@@ -1,0 +1,21 @@
+langcode: uk
+status: true
+dependencies:
+  module:
+    - node
+id: service
+label: Послуга
+type: 'canonical_entities:node'
+pattern: '/service/[node:title]'
+selection_criteria:
+  7390878b-54e7-433e-9874-4dc517d4fd21:
+    id: node_type
+    bundles:
+      service: service
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 7390878b-54e7-433e-9874-4dc517d4fd21
+selection_logic: and
+weight: -5
+relationships: {  }

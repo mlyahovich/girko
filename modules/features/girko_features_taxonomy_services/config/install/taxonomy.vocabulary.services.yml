@@ -1,0 +1,8 @@
+langcode: uk
+status: true
+dependencies: {  }
+name: Послуги
+vid: services
+description: ''
+hierarchy: 0
+weight: 0

@@ -1,0 +1,42 @@
+langcode: uk
+status: true
+dependencies:
+  config:
+    - page_manager.page.service_term_page
+    - views.view.taxonomy_terms
+  module:
+    - ctools
+    - views
+id: service_term_page-block_display-1
+label: 'Service page (Service)'
+variant: block_display
+variant_settings:
+  blocks:
+    9fdac30f-139b-4e17-9950-9d2fce1b672e:
+      id: 'views_block:taxonomy_terms-block_city_for_service_list'
+      label: ''
+      provider: views
+      label_display: visible
+      views_label: ''
+      items_per_page: none
+      region: top
+      weight: 0
+      uuid: 9fdac30f-139b-4e17-9950-9d2fce1b672e
+      context_mapping: {  }
+  id: block_display
+  uuid: da3f7c4c-e7d5-47b7-b52d-b432ec09ec11
+  label: null
+  weight: 0
+  page_title: '[term:name]'
+page: service_term_page
+weight: 0
+selection_criteria:
+  -
+    id: 'entity_bundle:taxonomy_term'
+    bundles:
+      services: services
+    negate: false
+    context_mapping:
+      taxonomy_term: taxonomy_term
+selection_logic: and
+static_context: {  }

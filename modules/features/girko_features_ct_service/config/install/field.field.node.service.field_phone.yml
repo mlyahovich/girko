@@ -1,0 +1,18 @@
+langcode: uk
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_phone
+    - node.type.service
+id: node.service.field_phone
+field_name: field_phone
+entity_type: node
+bundle: service
+label: Телефон
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
