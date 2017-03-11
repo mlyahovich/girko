@@ -1,4 +1,3 @@
-uuid: 0c2c7b54-99e6-4c09-8493-79c3bc61700f
 langcode: uk
 status: true
 dependencies:
@@ -12,8 +11,6 @@ dependencies:
     - node
     - taxonomy
     - user
-_core:
-  default_config_hash: _mLVLdjT-zTwpUM3wB8D_371XDUrpqilM-IEtNo8QrU
 id: nodes
 label: Nodes
 module: views
