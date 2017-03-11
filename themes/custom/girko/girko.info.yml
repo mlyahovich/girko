@@ -21,3 +21,4 @@ regions:
 
 libraries:
   - 'girko/global-styling'
+  - 'colorbox'
