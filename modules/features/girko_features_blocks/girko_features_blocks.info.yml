@@ -6,6 +6,8 @@ core: 8.x
 dependencies:
   - block
   - ctools
+  - girko_features_view_nodes
   - node
+  - system
   - views
 version: 8.x-1.0
