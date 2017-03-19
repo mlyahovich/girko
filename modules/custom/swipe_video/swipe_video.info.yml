@@ -1,0 +1,6 @@
+name: 'Swipe video fomatter'
+type: module
+description: 'Swipe video fomatter for embed video field.'
+package: Media
+version: 8.x-1.0
+core: '8.x'

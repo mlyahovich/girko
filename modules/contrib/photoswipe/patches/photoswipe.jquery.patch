@@ -1,0 +1,55 @@
+Index: modules/contrib/photoswipe/js/photoswipe.jquery.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- modules/contrib/photoswipe/js/photoswipe.jquery.js	(revision 9325ca7f2bbff17be846db861cc99566dcd7e843)
++++ modules/contrib/photoswipe/js/photoswipe.jquery.js	(revision )
+@@ -73,6 +73,10 @@
+ 
+       // get the index of the clicked element
+       index = clickedListItem.index('.photoswipe');
++      if (typeof clickedListItem.attr('delta') != 'undefined') {
++        index = Number(clickedListItem.attr('delta'));
++      }
++      console.log(index);
+       if (index >= 0) {
+         // open PhotoSwipe if valid index found
+         Drupal.behaviors.photoswipe.openPhotoSwipe(index, $clickedGallery);
+@@ -92,15 +96,27 @@
+       images.each(function (index) {
+         var $image = $(this);
+         size = $image.data('size') ? $image.data('size').split('x') : ['',''];
+-        items.push(
+-          {
+-            src : $image.attr('href'),
+-            w: size[0],
+-            h: size[1],
+-            title : $image.data('overlay-title')
+-          }
+-        );
+-      })
++
++        var html = $image.attr('html');
++        if (typeof html == 'undefined') {
++          items.push(
++            {
++              src : $image.attr('href'),
++              w: size[0],
++              h: size[1],
++              title : $image.data('overlay-title')
++            }
++          );
++        }
++        else {
++          items.push(
++            {
++              html: html,
++              title : $image.data('overlay-title')
++            }
++          );
++        }
++      });
+ 
+       // define options
+       options.index = index;

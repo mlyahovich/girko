@@ -1,0 +1,32 @@
+<?php
+
+/**
+ * @file
+ * Photswipe integration with Drupal module.
+ */
+
+
+/**
+ * Implements hook_theme().
+ */
+function swipe_video_theme() {
+  return array(
+    'photoswipe_video_formatter' => array(
+      'variables' => array(
+        'item' => NULL,
+        'host' => NULL,
+        'img' => NULL,
+        'delta' => NULL,
+        'display_settings' => array(),
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_page_attachments().
+ */
+function swipe_video_page_attachments_alter(array &$attachments) {
+  //todo set indentication video_field with formatter
+  $attachments['#attached']['library'][] = 'swipe_video/swipe_video.external';
+}

@@ -1,0 +1,25 @@
+{#
+/**
+ * @file
+ * Returns HTML for an image using a specific Photoswipe image style.
+ *
+ * Available variables:
+ * - image: image item.
+ * - path: The path of the image that should be displayed in Photoswipe.
+ * - attributes: Link attributes.
+ * - item: An ImageItem object.
+ * - display_settings: optional image styles.
+ *
+ * @ingroup themeable
+ */
+#}
+
+{% if host == 'www.youtube.com' %}
+ <a href="{{ item }}" delta="{{ delta }}" html='<div class="wrapper"><div class="video-wrapper"><iframe class="iframe-video" width="960" height="640" src="https://www.youtube.com/embed/{{ item }}?enablejsapi=1" frameborder="0" allowfullscreen></iframe></div></div>' class="photoswipe">
+  <img src="https://i.ytimg.com/vi/{{ item }}/sddefault.jpg" class="img-responsive">
+</a>
+{% elseif host == 'vimeo.com' %}
+  <a href="{{ item }}" delta="{{ delta }}" html='<div class="wrapper"><div class="video-wrapper"><iframe class="iframe-video" src="https://player.vimeo.com/video/{{ item }}?api=1" width="640" height="360" rameborder="0"></iframe></div></div>' class="photoswipe">
+    <img src="{{ img }}" class="img-responsive">
+  </a>
+{% endif %}

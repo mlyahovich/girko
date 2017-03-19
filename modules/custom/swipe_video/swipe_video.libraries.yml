@@ -1,0 +1,14 @@
+swipe_video.init:
+  js:
+    js/videoswipe.jquery.js: {}
+    js/script.js: {}
+  css:
+    component:
+      css/style.css: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+swipe_video.external:
+  version: 2
+  js:
+    http://a.vimeocdn.com/js/froogaloop2.min.js: { type: external }

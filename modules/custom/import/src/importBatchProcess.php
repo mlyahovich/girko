@@ -175,7 +175,7 @@ class importBatchProcess {
               $arr = explode('/', $url);
               $file_name = end($arr);
               $data = file_get_contents($url);
-              $file = file_save_data($data, 'public://' . $file_name);
+              $file = file_save_data($data, 'public://services' . $file_name);
               $images_list[] = ['target_id' => $file->id()];
             }
           }
@@ -186,7 +186,7 @@ class importBatchProcess {
             $arr = explode('/', $url);
             $file_name = end($arr);
             $data = file_get_contents($url);
-            $file = file_save_data($data, 'public://' . $file_name);
+            $file = file_save_data($data, 'public://services' . $file_name);
             $images_list['target_id'] = $file->id();
           }
         }

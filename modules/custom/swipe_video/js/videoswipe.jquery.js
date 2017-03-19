@@ -126,20 +126,6 @@
       // Pass data to PhotoSwipe and initialize it
       var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
       gallery.init();
-
-        gallery.listen('close', function() {
-          var iframe = document.getElementsByClassName('iframe-video');
-          for (var i = 0; i < iframe.length; i++) {
-            iframe[i].contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
-
-            var src = iframe[i].src;
-            if (src.indexOf("vimeo") >= 0) {
-              var player = $f(iframe[i]);
-              player.api('pause');
-            }
-          }
-        });
-
       this.galleries.push(gallery);
     },
     /**
@@ -180,4 +166,4 @@
       return params;
     }
   };
-})(jQuery, Drupal, PhotoSwipe, PhotoSwipeUI_Default);
+})(jQuery, Drupal);
